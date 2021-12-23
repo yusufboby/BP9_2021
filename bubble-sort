@@ -1,0 +1,305 @@
+package bp1_2021;
+import java.util.Scanner;
+public class BP9_2021 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        //inisialisasi
+        int pilih,pilih2,porsi,totalbayar,urut;
+        int idx=0, grandtotal = 0;
+        String ask;
+        String Menu[][]=new String [10][2];
+        int Harga[][]=new int [10][2];
+        
+        String daftarbeli[][]=new String[10][4];
+        Menu[0][0]="Menjes";Harga[0][0]=1000;
+        Menu[1][0]="Tahu";Harga[1][0]=1000;
+        Menu[2][0]="Tempe";Harga[2][0]=1000;
+        Menu[3][0]="Usus";Harga[3][0]=2000;
+        Menu[4][0]="Sayap";Harga[4][0]=5000;
+        Menu[0][1]="Teh";Harga[0][1]=3000;
+        Menu[1][1]="Jeruk";Harga[1][1]=4000;
+        Menu[2][1]="Susu";Harga[2][1]=5000;
+        Menu[3][1]="Jahe";Harga[3][1]=6000;
+        Menu[4][1]="Kopi";Harga[4][1]=7000;
+        
+        do{
+        System.out.println("============================================================");       
+        System.out.println("KASIR ANGKRINGAN JAWA");
+        System.out.println("============================================================");
+        System.out.println("Sedia");
+        System.out.println("============================================================");
+        System.out.println("1. Aneka Makanan");
+        System.out.println("2. Aneka Minuman");
+        System.out.println("3. Ururtkan Menu");
+        System.out.println("4. Keluar/ Selesai");
+        System.out.print("Pilih = ");
+        pilih = input.nextInt();
+        
+        switch(pilih){
+            case 1 :
+                System.out.println("============================================================");
+                System.out.println("ANEKA MENU MAKANAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][0]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][0] + "\t" + Harga[i][0]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][0];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][0]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][0] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                 
+                break;
+            case 2 :
+                System.out.println("============================================================");
+                System.out.println("ANEKA MENU MINUMAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][1]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][1] + "\t" + Harga[i][1]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][1];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][1]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][1] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                break;
+            case 3 :
+                System.out.println("============================================================");
+                System.out.println("Urutkan Menu ");
+                System.out.println("============================================================");
+                System.out.println("1. Makanan");
+                System.out.println("2. Minuman");
+                System.out.print("Pilih = ");
+                urut = input.nextInt();
+                
+                if(urut==1){
+                System.out.println("============================================================");
+                System.out.println("URUTKAN MENU MAKANAN ");
+                System.out.println("============================================================");
+                System.out.println("1. Dari Yang Termurah");
+                System.out.println("2. Dari Yang Termahal");
+                System.out.print("Pilih = ");
+                pilih2 = input.nextInt();
+                
+                switch(pilih2){
+                    case 1:
+                       
+                        for(int i=0;i<Menu.length; i++){
+                            for(int j=0;j<Menu.length-1;j++){
+                                if(Harga[j+1][0] != 0){
+                                     if(Harga[j][0]>Harga[j+1][0]){
+                                    int hargasort=Harga[j][0];
+                                    Harga[j][0]=Harga[j+1][0];
+                                    Harga[j+1][0]=hargasort;
+                                    String menusort = Menu[j][0];
+                                    Menu[j][0]=Menu[j+1][0];
+                                    Menu[j+1][0]=menusort;
+                                }
+                                }
+                               
+                            }
+                        }
+                System.out.println("============================================================");
+                System.out.println("ANEKA MENU MAKANAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][0]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][0] + "\t" + Harga[i][0]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][0];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][0]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][0] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                 
+                 break;
+                    case 2 :
+                         for(int i=0;i<Menu.length; i++){
+                            for(int j=0;j<Menu.length-1;j++){
+                                if(Harga[j+1][0] != 0){
+                                     if(Harga[j][0]<Harga[j+1][0]){
+                                    int hargasort=Harga[j][0];
+                                    Harga[j][0]=Harga[j+1][0];
+                                    Harga[j+1][0]=hargasort;
+                                    String menusort = Menu[j][0];
+                                    Menu[j][0]=Menu[j+1][0];
+                                    Menu[j+1][0]=menusort;
+                                }
+                                }
+                               
+                            }
+                        }
+                         System.out.println("============================================================");
+                System.out.println("ANEKA MENU MAKANAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][0]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][0] + "\t" + Harga[i][0]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][0];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][0]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][0] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                        break;
+                }
+                
+                        
+                }else if(urut==2){
+                    System.out.println("============================================================");
+                System.out.println("URUTKAN MENU MAKANAN ");
+                System.out.println("============================================================");
+                System.out.println("1. Dari Yang Termurah");
+                System.out.println("2. Dari Yang Termahal");
+                System.out.print("Pilih = ");
+                pilih2 = input.nextInt();
+                
+                switch(pilih2){
+                    case 1 :
+                        for(int i=0;i<Menu.length; i++){
+                            for(int j=0;j<Menu.length-1;j++){
+                                if(Harga[j+1][1] != 0){
+                                     if(Harga[j][1]>Harga[j+1][1]){
+                                    int hargasort=Harga[j][1];
+                                    Harga[j][1]=Harga[j+1][1];
+                                    Harga[j+1][1]=hargasort;
+                                    String menusort = Menu[j][1];
+                                    Menu[j][1]=Menu[j+1][1];
+                                    Menu[j+1][1]=menusort;
+                                }
+                                }
+                               
+                            }
+                        }
+                System.out.println("============================================================");
+                System.out.println("ANEKA MENU MINUMAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][1]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][1] + "\t" + Harga[i][1]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][1];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][1]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][1] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                        break;
+                    case 2 :
+                         for(int i=0;i<Menu.length; i++){
+                            for(int j=0;j<Menu.length-1;j++){
+                                if(Harga[j+1][1] != 0){
+                                     if(Harga[j][1]<Harga[j+1][1]){
+                                    int hargasort=Harga[j][1];
+                                    Harga[j][1]=Harga[j+1][1];
+                                    Harga[j+1][1]=hargasort;
+                                    String menusort = Menu[j][1];
+                                    Menu[j][1]=Menu[j+1][1];
+                                    Menu[j+1][1]=menusort;
+                                }
+                                }
+                               
+                            }
+                        }
+                         System.out.println("============================================================");
+                System.out.println("ANEKA MENU MINUMAN");
+                System.out.println("============================================================");
+                 for(int i=0;i<Menu.length;i++){
+                    if (Menu[i][1]!=null){
+                        System.out.println((i+1) + "\t" + Menu[i][1] + "\t" + Harga[i][1]);
+                    }
+                }
+                 System.out.println("============================================================");
+                 System.out.print("Pilih = ");
+                 pilih2 = input.nextInt();
+                 System.out.print("Nominal Porsi =");
+                 porsi=input.nextInt();
+                 daftarbeli[idx][0]=Menu[pilih2-1][1];
+                 daftarbeli[idx][1]=String.valueOf(Harga[pilih2-1][1]);
+                 daftarbeli[idx][2]=String.valueOf(porsi);
+                 daftarbeli[idx][3]=String.valueOf(Harga[pilih2-1][1] * porsi);
+                 System.out.println("============================================================");
+                 System.out.println("Harga : "+daftarbeli[idx][1]);
+                 System.out.println("Total Harga : "+ daftarbeli[idx][3]);
+                        break;
+                }
+                }
+                break;
+            
+        }
+        grandtotal = grandtotal + Integer.parseInt(daftarbeli[idx][3]);
+       
+            System.out.print("Apakah Anda Ingin Memesan Lagi ? [y/n] ");
+            ask = input.next();
+            if(ask.equalsIgnoreCase("y")){
+                //null
+            }else if(ask.equalsIgnoreCase("n")){
+                pilih=4;
+            }
+             idx++;
+        } while (pilih!=4);
+        
+        //Struk Pembelian
+        System.out.println("============================================================");
+        System.out.println("STRUK BELANJA");
+        System.out.println("============================================================");
+        System.out.println("No\t" + "Menu\t" + "Harga\t" + "Porsi\t" + "Total Harga");
+        System.out.println("============================================================");
+        
+        for(int i=0;i<idx;i++){
+            System.out.println((i+1)+"."+ "\t"+ daftarbeli[i][0]+ "\t"+ daftarbeli[i][1]+ "\t"+ daftarbeli[i][2]+ "\t"+ daftarbeli[i][3]);
+        
+        }
+        System.out.println("============================================================");
+        System.out.println("Grand Total : Rp. " +grandtotal);
+        System.out.print("Total Pembayaran : Rp. ");
+        totalbayar=input.nextInt();
+        System.out.println("Total Kembalian : Rp. " + (totalbayar-grandtotal));
+        System.out.println("");
+        System.out.println("============================================================");
+        System.out.println("TERIMAKASIH TELAH BELI DI ANGKRINGAN KAMI");
+        System.out.println("============================================================");
+    }    
+}
